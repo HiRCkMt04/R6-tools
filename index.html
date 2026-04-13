@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<style>
+body {
+  margin: 0;
+  background: #111;
+}
+
+/* 상단 전체 */
+.top-bar {
+  display: flex;
+  height: 220px;
+  background: #000;
+  border-bottom: 2px solid #fff;
+}
+
+/* 아이콘 영역 (공격/방어 공통) */
+.icon-panel {
+  width: 360px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(10, 30px);
+  gap: 6px;
+  align-content: start;
+  border-right: 2px solid #333;
+}
+
+/* 아이콘 */
+.icon {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icon img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 가젯 패널 전용 */
+.gadget-panel {
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #333;
+}
+
+/* 위/아래 영역 */
+.gadget-section {
+  flex: 1;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(8, 40px);
+  gap: 6px;
+  align-content: start;
+}
+
+/* 가젯 아이콘 (40px) */
+.gadget-icon {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.gadget-icon img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 툴 영역 */
+.tool-panel {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: white;
+}
+
+.tool-panel button {
+  background: #222;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="top-bar">
+
+  <!-- 공격 -->
+  <div class="icon-panel">
+
+    <div class="icon" onclick="selectIcon('striker.png')"><img src="striker.png"></div>
+    <div class="icon" onclick="selectIcon('sledge.png')"><img src="sledge.png"></div>
+    <div class="icon" onclick="selectIcon('thatcher.png')"><img src="thatcher.png"></div>
+    <div class="icon" onclick="selectIcon('ash.png')"><img src="ash.png"></div>
+    <div class="icon" onclick="selectIcon('thermite.png')"><img src="thermite.png"></div>
+    <div class="icon" onclick="selectIcon('twitch.png')"><img src="twitch.png"></div>
+    <div class="icon" onclick="selectIcon('montagne.png')"><img src="montagne.png"></div>
+    <div class="icon" onclick="selectIcon('glaz.png')"><img src="glaz.png"></div>
+    <div class="icon" onclick="selectIcon('fuze.png')"><img src="fuze.png"></div>
+    <div class="icon" onclick="selectIcon('blitz.png')"><img src="blitz.png"></div>
+    <div class="icon" onclick="selectIcon('iq.png')"><img src="iq.png"></div>
+    <div class="icon" onclick="selectIcon('buck.png')"><img src="buck.png"></div>
+    <div class="icon" onclick="selectIcon('blackbeard.png')"><img src="blackbeard.png"></div>
+    <div class="icon" onclick="selectIcon('capitao.png')"><img src="capitao.png"></div>
+    <div class="icon" onclick="selectIcon('hibana.png')"><img src="hibana.png"></div>
+    <div class="icon" onclick="selectIcon('jackal.png')"><img src="jackal.png"></div>
+    <div class="icon" onclick="selectIcon('ying.png')"><img src="ying.png"></div>
+    <div class="icon" onclick="selectIcon('zofia.png')"><img src="zofia.png"></div>
+    <div class="icon" onclick="selectIcon('dokkaebi.png')"><img src="dokkaebi.png"></div>
+    <div class="icon" onclick="selectIcon('lion.png')"><img src="lion.png"></div>
+    <div class="icon" onclick="selectIcon('finka.png')"><img src="finka.png"></div>
+    <div class="icon" onclick="selectIcon('maverick.png')"><img src="maverick.png"></div>
+    <div class="icon" onclick="selectIcon('nomad.png')"><img src="nomad.png"></div>
+    <div class="icon" onclick="selectIcon('gridlock.png')"><img src="gridlock.png"></div>
+    <div class="icon" onclick="selectIcon('nokk.png')"><img src="nokk.png"></div>
+    <div class="icon" onclick="selectIcon('amaru.png')"><img src="amaru.png"></div>
+    <div class="icon" onclick="selectIcon('kali.png')"><img src="kali.png"></div>
+    <div class="icon" onclick="selectIcon('iana.png')"><img src="iana.png"></div>
+    <div class="icon" onclick="selectIcon('ace.png')"><img src="ace.png"></div>
+    <div class="icon" onclick="selectIcon('zero.png')"><img src="zero.png"></div>
+    <div class="icon" onclick="selectIcon('flores.png')"><img src="flores.png"></div>
+    <div class="icon" onclick="selectIcon('osa.png')"><img src="osa.png"></div>
+    <div class="icon" onclick="selectIcon('sens.png')"><img src="sens.png"></div>
+    <div class="icon" onclick="selectIcon('grim.png')"><img src="grim.png"></div>
+    <div class="icon" onclick="selectIcon('brava.png')"><img src="brava.png"></div>
+    <div class="icon" onclick="selectIcon('ram.png')"><img src="ram.png"></div>
+    <div class="icon" onclick="selectIcon('deimos.png')"><img src="deimos.png"></div>
+    <div class="icon" onclick="selectIcon('rauora.png')"><img src="rauora.png"></div>
+    <div class="icon" onclick="selectIcon('solidsnake.png')"><img src="solidsnake.png"></div>
+
+    <!-- 계속 추가하면 자동 정렬됨 -->
+
+  </div>
+
+  <!-- 방어 -->
+  <div class="icon-panel">
+
+    <div class="icon" onclick="selectIcon('smoke.png')"><img src="smoke.png"></div>
+    <div class="icon" onclick="selectIcon('mute.png')"><img src="mute.png"></div>
+    <div class="icon" onclick="selectIcon('castle.png')"><img src="castle.png"></div>
+    <div class="icon" onclick="selectIcon('pulse.png')"><img src="pulse.png"></div>
+    <div class="icon" onclick="selectIcon('doc.png')"><img src="doc.png"></div>
+    <div class="icon" onclick="selectIcon('rook.png')"><img src="rook.png"></div>
+    <div class="icon" onclick="selectIcon('kapkan.png')"><img src="kapkan.png"></div>
+    <div class="icon" onclick="selectIcon('tachanka.png')"><img src="tachanka.png"></div>
+    <div class="icon" onclick="selectIcon('jager.png')"><img src="jager.png"></div>
+    <div class="icon" onclick="selectIcon('bandit.png')"><img src="bandit.png"></div>
+    <div class="icon" onclick="selectIcon('frost.png')"><img src="frost.png"></div>
+    <div class="icon" onclick="selectIcon('valkyrie.png')"><img src="valkyrie.png"></div>
+    <div class="icon" onclick="selectIcon('caveira.png')"><img src="caveira.png"></div>
+    <div class="icon" onclick="selectIcon('echo.png')"><img src="echo.png"></div>
+    <div class="icon" onclick="selectIcon('mira.png')"><img src="mira.png"></div>
+    <div class="icon" onclick="selectIcon('lesion.png')"><img src="lesion.png"></div>
+    <div class="icon" onclick="selectIcon('ela.png')"><img src="ela.png"></div>
+    <div class="icon" onclick="selectIcon('vigil.png')"><img src="vigil.png"></div>
+    <div class="icon" onclick="selectIcon('maestro.png')"><img src="maestro.png"></div>
+    <div class="icon" onclick="selectIcon('alibi.png')"><img src="alibi.png"></div>
+    <div class="icon" onclick="selectIcon('clash.png')"><img src="clash.png"></div>
+    <div class="icon" onclick="selectIcon('kaid.png')"><img src="kaid.png"></div>
+    <div class="icon" onclick="selectIcon('mozzie.png')"><img src="mozzie.png"></div>
+    <div class="icon" onclick="selectIcon('warden.png')"><img src="warden.png"></div>
+    <div class="icon" onclick="selectIcon('goyo.png')"><img src="goyo.png"></div>
+    <div class="icon" onclick="selectIcon('wamai.png')"><img src="wamai.png"></div>
+    <div class="icon" onclick="selectIcon('oryx.png')"><img src="oryx.png"></div>
+    <div class="icon" onclick="selectIcon('melusi.png')"><img src="melusi.png"></div>
+    <div class="icon" onclick="selectIcon('aruni.png')"><img src="aruni.png"></div>
+    <div class="icon" onclick="selectIcon('thunderbird.png')"><img src="thunderbird.png"></div>
+    <div class="icon" onclick="selectIcon('thorn.png')"><img src="thorn.png"></div>
+    <div class="icon" onclick="selectIcon('azami.png')"><img src="azami.png"></div>
+    <div class="icon" onclick="selectIcon('solis.png')"><img src="solis.png"></div>
+    <div class="icon" onclick="selectIcon('fenrir.png')"><img src="fenrir.png"></div>
+    <div class="icon" onclick="selectIcon('tubarao.png')"><img src="tubarao.png"></div>
+    <div class="icon" onclick="selectIcon('skopos.png')"><img src="skopos.png"></div>
+    <div class="icon" onclick="selectIcon('denari.png')"><img src="denari.png"></div>
+
+    <!-- 계속 추가 -->
+
+  </div>
+
+  <!-- 가젯 -->
+<div class="gadget-panel">
+
+  <!-- 공격 가젯 -->
+  <div class="gadget-section">
+
+    <div class="gadget-icon" onclick="selectIcon('charge.png')"><img src="charge.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('claymore.png')"><img src="claymore.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('smokegrenade.png')"><img src="smokegrenade.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('frag.png')"><img src="frag.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('flash.png')"><img src="flash.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('hardbreachingcharge.png')"><img src="hardbreachingcharge.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('impact_emp_grenade.png')"><img src="impact_emp_grenade.png"></div>
+
+  </div>
+
+  <!-- 방어 가젯 -->
+  <div class="gadget-section">
+
+    <div class="gadget-icon" onclick="selectIcon('wire.png')"><img src="wire.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('shield.png')"><img src="shield.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('bulletproof.png')"><img src="bulletproof.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('impact.png')"><img src="impact.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('nitro.png')"><img src="nitro.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('sensor.png')"><img src="sensor.png"></div>
+    <div class="gadget-icon" onclick="selectIcon('observationblocker.png')"><img src="observationblocker.png"></div>
+
+  </div>
+
+</div>
+
+  <!-- 기타 -->
+  <div class="icon-panel">
+
+    <div class="icon" onclick="selectIcon('bandit.png')"><img src="bandit.png"></div>
+
+    <!-- 계속 추가 -->
+
+
+  </div>
+
+
+
+  <!-- 툴 -->
+  <div class="tool-panel">
+
+    <div>
+      <button onclick="setMode('free')">자유</button>
+      <button onclick="setMode('erase')">지우개</button>
+    </div>
+
+    <div>
+      색상 <input type="color" id="colorPicker" value="#ff0000">
+    </div>
+
+    <div>
+      굵기 
+      <input type="range" min="1" max="50" value="5" oninput="setThickness(this.value)">
+      <input type="number" min="1" max="50" value="5" style="width:50px;"
+      onchange="setThickness(this.value)">
+    </div>
+
+    <div>
+      <button onclick="undo()">되돌리기</button>
+      <button onclick="clearCanvas()">전체삭제</button>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
+
+     <!-- 아래 영역 -->
+     <div style="flex:1; display:flex;">
+
+     <!-- ✅ 맵 영역 -->
+     <div id="mapContainer" style="flex:1; position:relative; background:#222;">
+    
+     <img id="map" src="oregon_b1.png" draggable="false"
+      style="width:100%; height:auto; display:block;">
+
+     <canvas id="drawCanvas"
+     style="position:absolute; left:0; top:0; pointer-events:none;"></canvas>
+
+     <canvas id="iconCanvas"
+     style="position:absolute; left:0; top:0;"></canvas>
+
+    </div>
+
+     <!-- ✅ 오른쪽 패널 (밖으로 빼기) -->
+     <div style="width:220px; background:#000; border-left:2px solid rgb(255, 255, 255); color:white; padding:10px; overflow-y:auto;">
+
+     <h3>오리건</h3>
+     <button onclick="changeMap('oregon_b1')">지하</button>
+     <button onclick="changeMap('oregon_1f')">1층</button>
+     <button onclick="changeMap('oregon_2f')">2층</button>
+ 
+     <h3>뱅크</h3>
+     <button onclick="changeMap('bank_b1')">지하</button>
+     <button onclick="changeMap('bank_1f')">1층</button>
+     <button onclick="changeMap('bank_2f')">2층</button>
+
+     <h3>에메랄드 평원</h3>
+     <button onclick="changeMap('emerald_1f')">1층</button>
+     <button onclick="changeMap('emerald_2f')">2층</button>
+
+     <h3>클럽하우스</h3>
+     <h3>나이트헤븐 연구소</h3>
+     <h3>소굴</h3>
+     <h3>그거 있잖아 그거</h3>
+
+    </div>
+
+ </div>
+  
+</div>
+
+<script>
+let mode = "draw";
+let isDrawing = false;
+let isDraggingIcon = false;
+
+let actions = [];
+
+let selectedIcon = null;
+let icons = [];
+
+let draggingIcon = null;
+let selectedIconObj = null;
+let iconImages = {};
+
+let offsetX = 0;
+let offsetY = 0;
+
+let currentThickness = 5;
+
+const drawCanvas = document.getElementById("drawCanvas");
+const drawCtx = drawCanvas.getContext("2d");
+
+const iconCanvas = document.getElementById("iconCanvas");
+const iconCtx = iconCanvas.getContext("2d");
+
+const map = document.getElementById("map");
+map.onload = resizeCanvas;
+window.addEventListener("resize", resizeCanvas);
+
+// 캔버스 맞춤
+function resizeCanvas() {
+  drawCanvas.width = map.clientWidth;
+  drawCanvas.height = map.clientHeight;
+
+  iconCanvas.width = map.clientWidth;
+  iconCanvas.height = map.clientHeight;
+
+  redrawFromActions(); // ⭐ 이거 추가
+}
+
+// 좌표
+function getPos(e) {
+  const rect = iconCanvas.getBoundingClientRect(); // ⭐ 변경
+  return {
+    x: e.clientX - rect.left,
+    y: e.clientY - rect.top
+  };
+}
+
+// 모드
+function setMode(m) {
+  mode = m;
+
+  if (m !== "icon") {
+    selectedIcon = null; // ⭐ 아이콘 모드 종료
+  }
+}
+
+// 맵 변경
+function changeMap(name) {
+  map.src = name + ".png";
+
+  setTimeout(() => {
+    resizeCanvas();
+    redrawFromActions(); // ⭐ 추가
+  }, 50);
+}
+
+// ============================
+// 🖱️ 이벤트
+// ============================
+
+iconCanvas.addEventListener("mousedown", (e) => {
+  const { x, y } = getPos(e);
+
+  isDraggingIcon = false;
+
+  // 1️⃣ 아이콘 위 클릭 → 드래그
+  for (let icon of icons) {
+    const size = 40;
+
+    if (
+      x >= icon.x - size/2 &&
+      x <= icon.x + size/2 &&
+      y >= icon.y - size/2 &&
+      y <= icon.y + size/2
+    ) {
+      draggingIcon = icon;
+      selectedIconObj = icon;
+      isDraggingIcon = true;
+
+      offsetX = x - icon.x;
+      offsetY = y - icon.y;
+      return;
+    }
+  }
+
+  // 2️⃣ 아이콘 생성 (빈 공간일 때만)
+  if (mode === "icon" && selectedIcon) {
+    const newIcon = { x, y, src: selectedIcon };
+    icons.push(newIcon);
+    selectedIconObj = newIcon;
+
+    drawIcons();
+    return;
+  }
+
+  // 3️⃣ 그림
+  if (mode !== "icon") {
+    startDraw(e);
+  }
+});
+
+iconCanvas.addEventListener("mousemove", (e) => {
+  if (isDraggingIcon) {
+    moveIcon(e);
+  } else {
+    if (mode !== "icon") {
+      draw(e);
+    }
+  }
+});
+
+document.addEventListener("mouseup", endDraw);
+iconCanvas.addEventListener("mouseleave", endDraw);
+
+// ============================
+// ✏️ 그림
+// ============================
+
+function startDraw(e) {
+  const {x, y} = getPos(e);
+
+  isDrawing = true;
+
+  drawCtx.beginPath();
+  drawCtx.moveTo(x, y);
+
+  // ⭐ 새 액션 시작
+  actions.push({
+    type: mode,
+    points: [{ x, y }],
+    color: document.getElementById("colorPicker").value,
+    thickness: currentThickness
+  });
+}
+
+function draw(e) {
+  if (!isDrawing) return;
+
+  const {x, y} = getPos(e);
+
+  drawCtx.lineWidth = currentThickness;
+
+  if (mode === "erase") {
+    drawCtx.globalCompositeOperation = "destination-out";
+  } else {
+    drawCtx.globalCompositeOperation = "source-over";
+    drawCtx.strokeStyle = document.getElementById("colorPicker").value;
+  }
+
+  drawCtx.lineTo(x, y);
+  drawCtx.stroke();
+
+  // ⭐ 현재 액션에 좌표 추가
+  const currentAction = actions[actions.length - 1];
+  currentAction.points.push({ x, y });
+}
+
+// ============================
+// 🧱 아이콘 이동
+// ============================
+
+function moveIcon(e) {
+  if (!draggingIcon) return;
+
+  const {x, y} = getPos(e);
+
+  draggingIcon.x = x - offsetX;
+  draggingIcon.y = y - offsetY;
+
+  drawIcons(); // ⭐ 추가 (핵심)
+}
+
+// ============================
+// 🧹 종료
+// ============================
+
+function endDraw() {
+  isDrawing = false;
+  isDraggingIcon = false;
+  draggingIcon = null;
+
+  drawCtx.beginPath();
+  drawIcons();
+}
+
+// ============================
+// 🧱 아이콘 이동
+// ============================
+
+function drawIcons() {
+  const size = 40; // ⭐ 여기서 크기 통일
+
+  iconCtx.clearRect(0, 0, iconCanvas.width, iconCanvas.height);
+
+  icons.forEach(icon => {
+    const img = iconImages[icon.src];
+    if (!img || !img.complete) return;
+
+    // 아이콘
+    iconCtx.drawImage(
+      img,
+      icon.x - size / 2,
+      icon.y - size / 2,
+      size,
+      size
+    );
+
+    // ⭐ 기본 테두리 (모든 아이콘)
+    iconCtx.strokeStyle = "white";
+    iconCtx.lineWidth = 2;
+    iconCtx.strokeRect(
+      icon.x - size / 2,
+      icon.y - size / 2,
+      size,
+      size
+    );
+
+  });
+}
+
+// ============================
+// 기능들
+// ============================
+
+function selectIcon(src) {
+  selectedIcon = src;
+  mode = "icon"; // ⭐ 아이콘 모드 진입
+
+  if (!iconImages[src]) {
+    const img = new Image();
+    img.src = src;
+    iconImages[src] = img;
+  }
+}
+
+function setThickness(value) {
+  currentThickness = value;
+  document.getElementById("thickness").value = value;
+  document.querySelector("input[type=number]").value = value;
+}
+
+function undo() {
+  if (actions.length === 0) return;
+
+  actions.pop(); // ⭐ 마지막 작업 삭제
+  redrawFromActions();
+}
+
+function clearCanvas() {
+  actions = []; // ⭐ history 대신 actions 초기화
+  icons = [];
+  selectedIconObj = null;
+
+  drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+  iconCtx.clearRect(0, 0, iconCanvas.width, iconCanvas.height);
+}
+
+// Delete 키 삭제
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Delete" && selectedIconObj) {
+    icons = icons.filter(i => i !== selectedIconObj);
+    selectedIconObj = null;
+
+    drawIcons(); // ⭐ 추가
+  }
+});
+
+function redrawFromActions() {
+  drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
+
+  actions.forEach(action => {
+    drawCtx.beginPath();
+    drawCtx.lineWidth = action.thickness;
+
+    if (action.type === "erase") {
+      drawCtx.globalCompositeOperation = "destination-out";
+    } else {
+      drawCtx.globalCompositeOperation = "source-over";
+      drawCtx.strokeStyle = action.color;
+    }
+
+    const pts = action.points;
+
+    drawCtx.moveTo(pts[0].x, pts[0].y);
+
+    for (let i = 1; i < pts.length; i++) {
+      drawCtx.lineTo(pts[i].x, pts[i].y);
+    }
+
+    drawCtx.stroke();
+  });
+
+  drawIcons(); // 아이콘 유지
+}
+
+</script>
+
+</body>
+</html>
