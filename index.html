@@ -275,7 +275,7 @@ body {
      <!-- ✅ 맵 영역 -->
      <div id="mapContainer" style="flex:1; position:relative; background:#222;">
     
-     <img id="map" src="oregon_b1.png" draggable="false"
+     <img id="map" src="images/oregon_b1.png" draggable="false"
       style="width:100%; height:auto; display:block;">
 
      <canvas id="drawCanvas"
@@ -290,18 +290,18 @@ body {
      <div style="width:220px; background:#000; border-left:2px solid rgb(255, 255, 255); color:white; padding:10px; overflow-y:auto;">
 
      <h3>오리건</h3>
-     <button onclick="changeMap('images/oregon_b1')">지하</button>
-     <button onclick="changeMap('images/oregon_1f')">1층</button>
-     <button onclick="changeMap('images/oregon_2f')">2층</button>
+    <button onclick="changeMap('oregon_b1')">지하</button>
+     <button onclick="changeMap('oregon_1f')">1층</button>
+     <button onclick="changeMap('oregon_2f')">2층</button>
  
      <h3>뱅크</h3>
-     <button onclick="changeMap('images/bank_b1')">지하</button>
-     <button onclick="changeMap('images/bank_1f')">1층</button>
-     <button onclick="changeMap('images/bank_2f')">2층</button>
+     <button onclick="changeMap('bank_b1')">지하</button>
+     <button onclick="changeMap('bank_1f')">1층</button>
+     <button onclick="changeMap('bank_2f')">2층</button>
 
      <h3>에메랄드 평원</h3>
-     <button onclick="changeMap('images/emerald_1f')">1층</button>
-     <button onclick="changeMap('images/emerald_2f')">2층</button>
+     <button onclick="changeMap('emerald_1f')">1층</button>
+     <button onclick="changeMap('emerald_2f')">2층</button>
 
      <h3>클럽하우스</h3>
      <h3>나이트헤븐 연구소</h3>
@@ -374,7 +374,7 @@ function setMode(m) {
 
 // 맵 변경
 function changeMap(name) {
-  map.src = + name + ".png";
+  map.src = "images/" + name + ".png";
 
   setTimeout(() => {
     resizeCanvas();
