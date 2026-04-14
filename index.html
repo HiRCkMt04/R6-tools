@@ -263,6 +263,7 @@ body {
     <div>
       <button onclick="undo()">되돌리기</button>
       <button onclick="clearCanvas()">전체삭제</button>
+      <button onclick="saveAsImage()">이미지 저장</button>
     </div>
 
   </div>
@@ -630,9 +631,15 @@ function setThickness(value) {
 }
 
 function undo() {
-  if (actions.length === 0) return;
+  // 그림 우선 삭제
+  if (actions.length > 0) {
+    actions.pop();
+  } 
+  // 그림 없으면 아이콘 삭제
+  else if (icons.length > 0) {
+    icons.pop();
+  }
 
-  actions.pop(); // ⭐ 마지막 작업 삭제
   redrawFromActions();
 }
 
@@ -681,6 +688,35 @@ function redrawFromActions() {
   });
 
   drawIcons(); // 아이콘 유지
+}
+
+function saveAsImage() {
+ const tempCanvas = document.createElement("canvas");
+ const ctx = tempCanvas.getContext("2d");
+
+ tempCanvas.width = map.clientWidth;
+ tempCanvas.height = map.clientHeight;
+
+ // ⭐ 이미지 로딩 확인
+ if (!map.complete) {
+  alert("맵 로딩 중입니다!");
+  return;
+  }
+
+  // 1️⃣ 맵
+  ctx.drawImage(map, 0, 0, tempCanvas.width, tempCanvas.height);
+
+  // 2️⃣ 그림
+  ctx.drawImage(drawCanvas, 0, 0);
+
+  // 3️⃣ 아이콘
+  ctx.drawImage(iconCanvas, 0, 0);
+
+  // 4️⃣ 다운로드
+  const link = document.createElement("a");
+  link.download = "map_capture.jpg";
+  link.href = tempCanvas.toDataURL("image/jpeg", 0.95);
+  link.click();
 }
 
 </script>
