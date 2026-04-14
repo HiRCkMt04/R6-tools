@@ -791,6 +791,12 @@ function saveAsImage() {
   link.click();
 }
 
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    resizeCanvas();
+  }, 50);
+});
+
 </script>
 
 </body>
