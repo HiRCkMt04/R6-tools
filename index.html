@@ -730,6 +730,20 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+  document.addEventListener("keydown", (e) => {
+  // Ctrl + Z (윈도우)
+  if (e.ctrlKey && e.key === "z") {
+    e.preventDefault();
+    undo();
+  }
+
+  // Cmd + Z (맥)
+  if (e.metaKey && e.key === "z") {
+    e.preventDefault();
+    undo();
+  }
+});
+
 function redrawFromActions() {
   drawCtx.clearRect(0, 0, drawCanvas.width, drawCanvas.height);
 
