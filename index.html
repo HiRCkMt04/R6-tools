@@ -342,7 +342,7 @@ body {
      <!-- ✅ 맵 영역 -->
      <div id="mapContainer" style="flex:1; position:relative; background:#222;">
     
-     <img id="map" src="oregon_b1.png" draggable="false">
+     <img id="map" src="images/club_1f.png" draggable="false">
 
      <canvas id="drawCanvas"
      style="position:absolute; left:0; top:0; pointer-events:none;"></canvas>
@@ -366,8 +366,8 @@ body {
      <div class="map-row">
      <span class="map-name">클럽하우스</span>
      <button onclick="changeMap('images/club_b1')">지하</button>
-     <button onclick="changeMap('club_1f')">1층</button>
-     <button onclick="changeMap('club_2f')">2층</button>
+     <button onclick="changeMap('images/club_1f')">1층</button>
+     <button onclick="changeMap('images/club_2f')">2층</button>
      </div>
      
      <div class="map-row">
@@ -393,7 +393,6 @@ body {
 
      <div class="map-row">
      <span class="map-name">카페</span>
-     <button onclick="changeMap('images/Kafe_b1')">지하</button>
      <button onclick="changeMap('images/Kafe_1f')">1층</button>
      <button onclick="changeMap('images/Kafe_2f')">2층</button>
      </div>
@@ -763,32 +762,32 @@ function selectIcon(src) {
   mode = "icon";
 
   // 강화벽
-  if (src === "reinforce.png") {
+  if (src === "images/reinforce.png") {
     selectedIcon.type = "important";
   }
 
   // 공격 가젯
   if (
-    src === "charge.png" ||
-    src === "claymore.png" ||
-    src === "smokegrenade.png" ||
-    src === "frag.png" ||
-    src === "flash.png" ||
-    src === "hardbreachingcharge.png" ||
-    src === "impact_emp_grenade.png"
+    src === "images/charge.png" ||
+    src === "images/claymore.png" ||
+    src === "images/smokegrenade.png" ||
+    src === "images/frag.png" ||
+    src === "images/flash.png" ||
+    src === "images/hardbreachingcharge.png" ||
+    src === "images/impact_emp_grenade.png"
   ) {
     selectedIcon.type = "attack";
   }
 
   // 방어 가젯
   if (
-    src === "wire.png" ||
-    src === "shield.png" ||
-    src === "bulletproof.png" ||
-    src === "impact.png" ||
-    src === "nitro.png" ||
-    src === "sensor.png" ||
-    src === "observationblocker.png"
+    src === "images/wire.png" ||
+    src === "images/shield.png" ||
+    src === "images/bulletproof.png" ||
+    src === "images/impact.png" ||
+    src === "images/nitro.png" ||
+    src === "images/sensor.png" ||
+    src === "images/observationblocker.png"
   ) {
     selectedIcon.type = "defense";
   }
