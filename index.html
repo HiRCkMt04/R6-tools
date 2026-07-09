@@ -10,12 +10,30 @@ body {
 }
 
 #map {
-  width: 1600px;
-  height: 800px;
+  width: 100%;
+  height: 100%;
   display: block;
-  margin: 0 auto;
 }
 
+#stage{
+    position: relative;
+
+    width:1600px;
+    height:800px;
+
+    margin:0 auto;
+}
+
+#mapContainer{
+    flex:1;
+    background:#222;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+}
+
+  
 /* 상단 전체 */
 .top-bar {
   position: fixed;   /* ⭐ 핵심 */
@@ -340,17 +358,21 @@ body {
      <div style="flex:1; display:flex; margin-top:220px;">
 
      <!-- ✅ 맵 영역 -->
-     <div id="mapContainer" style="flex:1; position:relative; background:#222;">
-    
-     <img id="map" src="images/club_1f.png" draggable="false">
+     <div id="mapContainer">
 
-     <canvas id="drawCanvas"
-     style="position:absolute; left:0; top:0; pointer-events:none;"></canvas>
+     <div id="stage">
 
-     <canvas id="iconCanvas"
-     style="position:absolute; left:0; top:0;"></canvas>
+        <img id="map" src="images/club_1f.png" draggable="false">
 
-    </div>
+        <canvas id="drawCanvas"
+        style="position:absolute; left:0; top:0; pointer-events:none;"></canvas>
+
+        <canvas id="iconCanvas"
+        style="position:absolute; left:0; top:0;"></canvas>
+
+        </div>
+
+     </div>
 
      <!-- ✅ 오른쪽 패널 (밖으로 빼기) -->
      <div style="
@@ -514,18 +536,20 @@ const iconCtx = iconCanvas.getContext("2d");
 const ICON_SIZE = 30;
 
 const map = document.getElementById("map");
+const stage = document.getElementById("stage");
 map.onload = resizeCanvas;
 window.addEventListener("resize", resizeCanvas);
 
 // 캔버스 맞춤
 function resizeCanvas() {
-  drawCanvas.width = map.clientWidth;
-  drawCanvas.height = map.clientHeight;
 
-  iconCanvas.width = map.clientWidth;
-  iconCanvas.height = map.clientHeight;
+  drawCanvas.width = stage.clientWidth;
+  drawCanvas.height = stage.clientHeight;
 
-  redrawFromActions(); // ⭐ 이거 추가
+  iconCanvas.width = stage.clientWidth;
+  iconCanvas.height = stage.clientHeight;
+
+  redrawFromActions();
 }
 
 // 좌표
@@ -909,8 +933,8 @@ function saveAsImage() {
   const tempCanvas = document.createElement("canvas");
   const ctx = tempCanvas.getContext("2d");
 
-  tempCanvas.width = map.clientWidth;
-  tempCanvas.height = map.clientHeight;
+  tempCanvas.width = stage.clientWidth;
+  tempCanvas.height = stage.clientHeight;
 
   // ⭐ 이미지 로딩 확인
   if (!map.complete) {
